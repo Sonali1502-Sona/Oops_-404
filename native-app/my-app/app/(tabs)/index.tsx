@@ -13,6 +13,8 @@ export default function EyeTrackingScreen() {
   const [activeView, setActiveView] = useState<'MAIN' | 'MESSAGING' | 'CALLS' | 'CAMERA' | 'AI_MODE'>('MAIN');
   const [cursorPos, setCursorPos] = useState({ x: width / 2, y: height / 2 });
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
+
+  
   const [layoutMap, setLayoutMap] = useState<{ [key: string]: { x: number, y: number, w: number, h: number } }>({});
   const [homeColor, setHomeColor] = useState('#6366f1');
 
@@ -34,8 +36,6 @@ export default function EyeTrackingScreen() {
       cursorPos.y <= layout.y + gridYOffset + layout.h
     );
   };
-
-
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
